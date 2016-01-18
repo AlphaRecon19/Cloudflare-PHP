@@ -1,0 +1,29 @@
+{
+    "name": "alpharecon19/cloudflare-php",
+    "authors": [
+        {
+            "name": "Chris Hilsdon",
+            "email": "chris@koolserve.uk"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+        "guzzlehttp/guzzle": "^6.1",
+        "symfony/yaml" : "3.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.*",
+        "squizlabs/php_codesniffer": "2.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cloudflare\\": ["src/"],
+            "CloudflareTest\\": ["test/"]
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "5.6"
+        }
+    }
+}
