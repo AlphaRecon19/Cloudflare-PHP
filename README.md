@@ -1,5 +1,7 @@
 # Cloudflare-PHP
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/AlphaRecon19/Cloudflare-PHP/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/AlphaRecon19/Cloudflare-PHP/?branch=master)
+
 A simple PHP Library that allows you to interact with Cloudflare's API using [guzzle](https://github.com/guzzle/guzzle).
 More information about endpoints can be found [here](https://api.cloudflare.com).
 
