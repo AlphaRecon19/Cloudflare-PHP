@@ -6,6 +6,8 @@ use GuzzleHttp\Client;
 class Base
 {
     public $request;
+    public $CF;
+    public $response;
 
     protected function __construct($Cloudflare)
     {
