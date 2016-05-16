@@ -17,8 +17,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Cloudflare\\": ["src/"],
-            "CloudflareTest\\": ["test/"]
+            "Cloudflare\\": ["src/"]
+        }
+    },
+    "autoload-dev" : {
+        "psr-4" : {
+            "Cloudflare\\Tests\\" : "tests/Cloudflare"
         }
     },
     "config": {
