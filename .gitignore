@@ -4,3 +4,4 @@ Cloudflare.yml
 !Cloudflare.yml.dist
 
 vendor/
+var/
