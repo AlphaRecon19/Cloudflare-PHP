@@ -1,18 +1,19 @@
 <?php
-namespace Cloudflare;
-
 /*
+ * @author Chris Hilsdon <chris@koolserve.uk>
+ *
  * @link https://api.cloudflare.com/#user-properties
  */
+namespace Cloudflare;
+
 class User extends Base
 {
     protected $URL = "/user";
 
     public function get()
     {
-        $request = new Request($this->CF);
-        $request->makeRequest($this->URL);
+        $this->makeRequest($this->URL);
 
-        return $request->getResponse();
+        return $this->getResponse();
     }
 }

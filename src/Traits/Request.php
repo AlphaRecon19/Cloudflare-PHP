@@ -1,9 +1,12 @@
 <?php
-namespace Cloudflare;
+/**
+ * @author Chris Hilsdon <chris@koolserve.uk>
+ */
+namespace Cloudflare\Traits;
 
 use GuzzleHttp\Client;
 
-class Request extends Base
+trait Request
 {
     protected $request;
     protected $response;

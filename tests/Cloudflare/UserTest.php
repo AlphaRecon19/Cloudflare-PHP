@@ -1,7 +1,7 @@
 <?php
 /**
-* @author Chris Hilsdon <chris@koolserve.uk>
-*/
+ * @author Chris Hilsdon <chris@koolserve.uk>
+ */
 namespace Cloudflare\Tests;
 
 use Cloudflare;

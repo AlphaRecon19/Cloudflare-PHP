@@ -1,4 +1,7 @@
 <?php
+/**
+ * @author Chris Hilsdon <chris@koolserve.uk>
+ */
 namespace Cloudflare;
 
 use Symfony\Component\Yaml\Yaml;

@@ -1,10 +1,13 @@
 <?php
+/**
+ * @author Chris Hilsdon <chris@koolserve.uk>
+ */
 namespace Cloudflare;
-
-use Request;
 
 class Base
 {
+    use Traits\Request;
+
     public $CF;
 
     public function __construct($Cloudflare)
