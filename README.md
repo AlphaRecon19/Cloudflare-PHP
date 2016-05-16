@@ -27,7 +27,7 @@ $Cloudflare = new Cloudflare\Cloudflare($APIKEY, $Email);
 require 'vendor/autoload.php';
 
 $Cloudflare = new Cloudflare\Cloudflare();
-$User = new Cloudflare\User\User($Cloudflare);
+$User = new Cloudflare\User($Cloudflare);
 
-var_dump($User->getDetails());
+var_dump($User->get());
 ```
