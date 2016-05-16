@@ -10,6 +10,7 @@ trait Request
 {
     protected $request;
     protected $response;
+    public $CF;
 
     public function makeRequest($request = "", $type = "GET")
     {
