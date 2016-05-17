@@ -8,7 +8,7 @@ namespace Cloudflare;
 
 class User extends Base
 {
-    protected $URL = "/user";
+    protected $URL = "user";
 
     public function get()
     {
