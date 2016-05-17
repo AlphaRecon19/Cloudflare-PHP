@@ -8,9 +8,40 @@ use Symfony\Component\Yaml\Yaml;
 
 class Cloudflare
 {
-    public $Endpoint = "https://api.cloudflare.com/client/v4/";
-    public $APIKEY;
-    public $Email;
+    protected $Endpoint = "https://api.cloudflare.com/client/v4/";
+    protected $APIKEY;
+    protected $Email;
+    protected $MakeRequests = true;
+
+    public function getEndpoint()
+    {
+        return $this->Endpoint;
+    }
+
+    public function getAPIKEY()
+    {
+        return $this->APIKEY;
+    }
+
+    public function getEmail()
+    {
+        return $this->Email;
+    }
+
+    public function getMakeRequests()
+    {
+        return $this->MakeRequests;
+    }
+
+    public function diableRequests()
+    {
+        $this->MakeRequests = false;
+    }
+
+    public function enableRequests()
+    {
+        $this->MakeRequests = true;
+    }
 
     public function __construct($APIKEY = null, $Email = null)
     {

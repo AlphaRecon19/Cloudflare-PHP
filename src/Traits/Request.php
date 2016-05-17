@@ -10,15 +10,34 @@ trait Request
 {
     protected $request;
     protected $response;
+    protected $RequestURL;
     public $CF;
+
+    public function getRequestURL()
+    {
+        return $this->RequestURL;
+    }
+
+    public function setRequestURL($url)
+    {
+        $this->RequestURL = $url;
+    }
 
     public function makeRequest($request = "", $type = "GET")
     {
+        $this->setRequestURL($this->CF->getEndpoint() . $request);
+
+        //Use in testing to not actualy make the request
+        if ($this->CF->getMakeRequests() === false) {
+            return true;
+        }
+
         $client = new Client();
-        $this->request = $client->request($type, $this->CF->Endpoint . $request, [
+
+        $this->request = $client->request($type, $this->getRequestURL(), [
             'headers' => [
-                'X-Auth-Key' => $this->CF->APIKEY,
-                'X-Auth-Email' => $this->CF->Email
+                'X-Auth-Key' => $this->CF->getAPIKEY(),
+                'X-Auth-Email' => $this->CF->getEmail()
             ]
         ]);
 
