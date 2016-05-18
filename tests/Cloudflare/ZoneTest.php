@@ -8,6 +8,8 @@ use Cloudflare;
 
 class ZoneTest extends BaseUnit
 {
+    protected $Zone;
+
     protected function setup()
     {
         $this->newCloudflare();
