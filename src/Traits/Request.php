@@ -36,7 +36,7 @@ trait Request
 
         $this->request = $client->request($type, $this->getRequestURL(), [
             'headers' => [
-                'X-Auth-Key' => $this->CF->getAPIKEY(),
+                'X-Auth-Key' => $this->CF->getAPIKey(),
                 'X-Auth-Email' => $this->CF->getEmail()
             ]
         ]);

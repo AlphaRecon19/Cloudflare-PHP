@@ -16,10 +16,10 @@ Alternatively, if this is not an option you can just pass these variables into
 the Cloudflare class when you create it.
 
 ```php
-$APIKEY = "1234567893feefc5f0q5000bfo0c38d90bbeb";
+$APIKey = "1234567893feefc5f0q5000bfo0c38d90bbeb";
 $Email = "example@example.com";
 
-$Cloudflare = new Cloudflare\Cloudflare($APIKEY, $Email);
+$Cloudflare = new Cloudflare\Cloudflare($APIKey, $Email);
 ```
 ## Example - Getting users details
 ```php
