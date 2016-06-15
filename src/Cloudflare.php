@@ -43,13 +43,13 @@ class Cloudflare
         $this->MakeRequests = true;
     }
 
-    public function __construct($APIKey = null, $Email = null)
+    public function __construct($options = null)
     {
-        if (is_null($APIKey) || is_null($Email)) {
+        if (is_null($options) || !is_array($options)) {
             $this->loadConfig();
         } else {
-            $this->APIKey = $APIKey;
-            $this->Email = $Email;
+            $this->APIKey = $options['APIKey'];
+            $this->Email = $options['Email'];
         }
     }
 
