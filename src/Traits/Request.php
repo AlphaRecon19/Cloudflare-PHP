@@ -4,8 +4,6 @@
  */
 namespace Cloudflare\Traits;
 
-use GuzzleHttp\Client;
-
 trait Request
 {
     protected $request;
@@ -32,7 +30,7 @@ trait Request
             return true;
         }
 
-        $client = new Client();
+        $client = $this->CF->getGuzzle();
 
         $this->request = $client->request($type, $this->getRequestURL(), [
             'headers' => [
