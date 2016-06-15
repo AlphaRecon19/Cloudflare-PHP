@@ -44,7 +44,6 @@ class Cloudflare
     {
         //If Guzzle has not been setup yet
         if($this->Guzzle === null) {
-            var_dump('Guzzle was created');
             $Guzzle = new Client();
             $this->setGuzzle($Guzzle);
         }
