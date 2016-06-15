@@ -9,7 +9,7 @@ use Symfony\Component\Yaml\Yaml;
 class Cloudflare
 {
     protected $Endpoint = "https://api.cloudflare.com/client/v4/";
-    protected $APIKEY;
+    protected $APIKey;
     protected $Email;
     protected $MakeRequests = true;
 
@@ -18,9 +18,9 @@ class Cloudflare
         return $this->Endpoint;
     }
 
-    public function getAPIKEY()
+    public function getAPIKey()
     {
-        return $this->APIKEY;
+        return $this->APIKey;
     }
 
     public function getEmail()
@@ -43,12 +43,12 @@ class Cloudflare
         $this->MakeRequests = true;
     }
 
-    public function __construct($APIKEY = null, $Email = null)
+    public function __construct($APIKey = null, $Email = null)
     {
-        if (is_null($APIKEY) || is_null($Email)) {
+        if (is_null($APIKey) || is_null($Email)) {
             $this->loadConfig();
         } else {
-            $this->APIKEY = $APIKEY;
+            $this->APIKey = $APIKey;
             $this->Email = $Email;
         }
     }
@@ -69,7 +69,7 @@ class Cloudflare
 
         $config = Yaml::parse(file_get_contents($load));
 
-        $this->APIKEY = $config['APIKEY'];
+        $this->APIKey = $config['APIKey'];
         $this->Email = $config['Email'];
     }
 }
