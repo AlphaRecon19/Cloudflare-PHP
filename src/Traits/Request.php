@@ -4,6 +4,8 @@
  */
 namespace Cloudflare\Traits;
 
+use GuzzleHttp\Client;
+
 trait Request
 {
     protected $request;
@@ -30,11 +32,11 @@ trait Request
             return true;
         }
 
-        $client = $this->CF->getGuzzle();
+        $client = new Client();
 
         $this->request = $client->request($type, $this->getRequestURL(), [
             'headers' => [
-                'X-Auth-Key' => $this->CF->getAPIKey(),
+                'X-Auth-Key' => $this->CF->getAPIKEY(),
                 'X-Auth-Email' => $this->CF->getEmail()
             ],
             'json' => $data

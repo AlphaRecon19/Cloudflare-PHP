@@ -5,29 +5,22 @@
 namespace Cloudflare;
 
 use Symfony\Component\Yaml\Yaml;
-use GuzzleHttp\Client;
 
 class Cloudflare
 {
     protected $Endpoint = "https://api.cloudflare.com/client/v4/";
-    protected $APIKey;
+    protected $APIKEY;
     protected $Email;
     protected $MakeRequests = true;
-    protected $Guzzle;
-
-    public function setGuzzle($Guzzle)
-    {
-        $this->Guzzle = $Guzzle;
-    }
 
     public function getEndpoint()
     {
         return $this->Endpoint;
     }
 
-    public function getAPIKey()
+    public function getAPIKEY()
     {
-        return $this->APIKey;
+        return $this->APIKEY;
     }
 
     public function getEmail()
@@ -40,17 +33,6 @@ class Cloudflare
         return $this->MakeRequests;
     }
 
-    public function getGuzzle()
-    {
-        //If Guzzle has not been setup yet
-        if($this->Guzzle === null) {
-            $Guzzle = new Client();
-            $this->setGuzzle($Guzzle);
-        }
-
-        return $this->Guzzle;
-    }
-
     public function diableRequests()
     {
         $this->MakeRequests = false;
@@ -61,19 +43,14 @@ class Cloudflare
         $this->MakeRequests = true;
     }
 
-    public function __construct($options = null, $Guzzle = null)
+    public function __construct($APIKEY = null, $Email = null)
     {
-        if (is_null($options) || !is_array($options)) {
+        if (is_null($APIKEY) || is_null($Email)) {
             $this->loadConfig();
         } else {
-            $this->APIKey = $options['APIKey'];
-            $this->Email = $options['Email'];
+            $this->APIKEY = $APIKEY;
+            $this->Email = $Email;
         }
-
-        if (!is_null($Guzzle)) {
-            $this->setGuzzle($Guzzle);
-        }
-
     }
 
     private function loadConfig()
@@ -92,7 +69,7 @@ class Cloudflare
 
         $config = Yaml::parse(file_get_contents($load));
 
-        $this->APIKey = $config['APIKey'];
+        $this->APIKEY = $config['APIKEY'];
         $this->Email = $config['Email'];
     }
 }
