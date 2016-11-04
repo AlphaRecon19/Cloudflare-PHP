@@ -21,7 +21,7 @@ trait Request
         $this->RequestURL = $url;
     }
 
-    public function makeRequest($request = "", $type = "GET")
+    public function makeRequest($request = "", $type = "GET", $data = null)
     {
         $this->setRequestURL($this->CF->getEndpoint() . $request);
 
@@ -36,7 +36,8 @@ trait Request
             'headers' => [
                 'X-Auth-Key' => $this->CF->getAPIKey(),
                 'X-Auth-Email' => $this->CF->getEmail()
-            ]
+            ],
+            'json' => $data
         ]);
 
         $response = (string) $this->request->getBody();

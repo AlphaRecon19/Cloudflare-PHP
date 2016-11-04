@@ -50,6 +50,14 @@ class Zone extends Base
         $string = substr($string, 0, -1);
 
         $this->makeRequest($this->URL . $string);
+
+        return $this->getResponse();
+    }
+
+    public function getDetails($zoneID)
+    {
+        $this->makeRequest($this->URL . '/' . $zoneID);
+        
         return $this->getResponse();
     }
 }
