@@ -75,9 +75,13 @@ class DNS extends Base
 
     public function update($id, $value)
     {
-        $info = $this->getInfo($id);
-        $data = json_decode(json_encode($info), true);
-        $data['content'] = $value;
+        $data = $value;
+
+        if (!is_object($value)) {
+            $info = $this->getInfo($id);
+            $data = json_decode(json_encode($info), true);
+            $data['content'] = $value;
+        }
 
         $url = $this->getURL($this->URL) . '/' . $id;
         try {
