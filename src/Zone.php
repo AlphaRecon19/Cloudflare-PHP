@@ -57,7 +57,18 @@ class Zone extends Base
     public function getDetails($zoneID)
     {
         $this->makeRequest($this->URL . '/' . $zoneID);
-        
+
+        return $this->getResponse();
+    }
+
+    public function clearCache($zoneId)
+    {
+        $this->makeRequest(
+            $this->URL . '/' . $zoneId . '/purge_cache',
+            'DELETE',
+            ['purge_everything' => true]
+        );
+
         return $this->getResponse();
     }
 }
