@@ -23,7 +23,7 @@ class DNS extends Base
      */
     public function fetch()
     {
-        $this->makeRequest($this->getURL($this->URL));
+        $this->makeRequest($this->getURL($this->URL . '?per_page=100'));
         $response = $this->getResponse();
 
         if($response->success != true) {
