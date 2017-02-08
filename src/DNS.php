@@ -49,7 +49,7 @@ class DNS extends Base
     /**
      * @link https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record
      */
-    public function new($type, $name, $content, $ttl = 1)
+    public function new($type, $name, $content, $ttl = 1, $extra = [])
     {
         $data = [
             'type' => $type,
@@ -58,15 +58,19 @@ class DNS extends Base
             'ttl' => $ttl
         ];
 
+        $data = $data + $extra;
+
         $url = $this->getURL($this->URL) . '/';
         try {
             $this->makeRequest($url, 'POST', $data);
         } catch(\Exception $e) {
             //var_dump($e);
+
+            return false;
         }
         $response = $this->getResponse();
 
-        if($response->success != true) {
+        if ($response->success != true) {
             return false;
         }
 
@@ -109,7 +113,7 @@ class DNS extends Base
 
         $response = $this->getResponse();
 
-        if($response->success === true) {
+        if ($response->success === true) {
             return true;
         }
 
