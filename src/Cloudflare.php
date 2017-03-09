@@ -64,7 +64,7 @@ class Cloudflare
         } elseif (@file_exists($dir . $configDist)) {
             $load = $configDist;
         } else {
-            die('Unable to load either "'.$config.'" or "'.$configDist.'"');
+            throw new \Exception('Unable to load either "'.$config.'" or "'.$configDist.'"', 1);
         }
 
         $config = Yaml::parse(file_get_contents($load));
