@@ -23,7 +23,7 @@ trait Request
         $this->RequestURL = $url;
     }
 
-    public function makeRequest($request = "", $type = "GET", $data = null)
+    public function makeRequest($request = "", $type = "GET", $data = null, $isCA = false)
     {
         $this->setRequestURL($this->CF->getEndpoint() . $request);
 
@@ -34,11 +34,19 @@ trait Request
 
         $client = new Client();
 
+        $headers = [
+            'X-Auth-Key' => $this->CF->getAPIKEY(),
+            'X-Auth-Email' => $this->CF->getEmail()
+        ];
+
+        if ($isCA === true) {
+            $headers = [
+                'X-Auth-User-Service-Key' => $this->CF->getOriginCAKey()
+            ];
+        }
+
         $this->request = $client->request($type, $this->getRequestURL(), [
-            'headers' => [
-                'X-Auth-Key' => $this->CF->getAPIKEY(),
-                'X-Auth-Email' => $this->CF->getEmail()
-            ],
+            'headers' => $headers,
             'json' => $data
         ]);
 

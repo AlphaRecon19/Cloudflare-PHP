@@ -13,6 +13,17 @@ class Cloudflare
     protected $Email;
     protected $MakeRequests = true;
 
+    /**
+     * Origin CA Key that is used to request SSL certificates
+     * @var string
+     */
+    protected $originCAKey;
+
+    public function getOriginCAKey()
+    {
+        return $this->originCAKey;
+    }
+
     public function getEndpoint()
     {
         return $this->Endpoint;
@@ -43,13 +54,14 @@ class Cloudflare
         $this->MakeRequests = true;
     }
 
-    public function __construct($APIKEY = null, $Email = null)
+    public function __construct($APIKEY = null, $Email = null, $key = null)
     {
         if (is_null($APIKEY) || is_null($Email)) {
             $this->loadConfig();
         } else {
             $this->APIKEY = $APIKEY;
             $this->Email = $Email;
+            $this->originCAKey = $key;
         }
     }
 
